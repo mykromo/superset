@@ -16,7 +16,7 @@
 #
 
 # -----------------------------------------------------------------------
-# We don't support docker-compose for production environments.
+# We don't support docker compose for production environments.
 # If you choose to use this type of deployment make sure to
 # create you own docker environment file (docker/.env) with your own
 # unique random secure passwords and SECRET_KEY.
@@ -35,7 +35,6 @@ x-common-build: &common-build
   cache_from:
     - apache/superset-cache:3.10-slim-bookworm
 
-version: "4.0"
 services:
   redis:
     image: redis:7
@@ -127,6 +126,17 @@ services:
     volumes: *superset-volumes
     healthcheck:
       disable: true
+      
+  superset-pgadmin4:
+    image: dpage/pgadmin4
+    container_name: superset_pgadmin4
+    ports:
+      - 8888:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: mlromo@joyofurbanfarming.org
+      PGADMIN_DEFAULT_PASSWORD: Jouf2024$
+    restart: unless-stopped
+    depends_on: *superset-depends-on
 
 volumes:
   superset_home:

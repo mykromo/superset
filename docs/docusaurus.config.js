@@ -25,7 +25,7 @@ const darkCodeTheme = require("prism-react-renderer").themes.vsDark;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Superset',
+  title: 'Joy of Urban Farming',
   tagline:
     'Apache Superset is a modern data exploration and visualization platform',
   url: 'https://superset.apache.org',
@@ -186,6 +186,10 @@ const config = {
           {
             to: '/docs/configuration/event-logging',
             from: '/docs/installation/event-logging/',
+          },
+          {
+            to: '/docs/contributing/howtos',
+            from: '/docs/contributing/translations/',
           },
         ],
       },
